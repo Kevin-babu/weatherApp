@@ -83,7 +83,7 @@ app.post("/", function(req, res){
             })
         }
         else{
-            res.sendFile(__dirname+"/second.html");
+            res.sendFile(__dirname+"/views/error.html");
         }
        
         
