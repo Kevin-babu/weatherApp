@@ -63,34 +63,35 @@ app.post("/", function(req, res){
                 lat= weatherData.coord.lat;
                 var icon = weatherData.weather[0].icon;
                 imageUrl = "http://openweathermap.org/img/wn/"+ icon +"@2x.png";
-                console.log("lat-" +lat+"lon"+lon);
+                // console.log("lat-" +lat+"lon"+lon);
     
                 const timeUrl= "https://api.ipgeolocation.io/timezone?apiKey=" +timeAppKey+"&lat="+lat+"&long="+lon;
-                console.log(timeUrl);
+                // console.log(timeUrl);
                 https.get(timeUrl, function(response){
     
                     response.on("data", function(data){
                         const timeData= JSON.parse(data);
                         time = timeData.time_12;
                         
-                        console.log(time);
+                        // console.log(time);
                     
     
-                    })
+                    })                                      //response time
                     res.redirect("/"); 
-                })
+                })                                          //https
             
-            })
-        }
-        else{
+            })                                              //response weather
+        }                                                   //if
+        
+     else{
             res.sendFile(__dirname+"/views/error.html");
         }
        
         
        
-    })
+    })                    		      //https
 
-})
+})			      //post
 
 
 app.listen(process.env.PORT || 3000, function(){
